@@ -1,0 +1,43 @@
+{
+ "name":"NBA Finals",
+ "children":[
+     {
+         "name": "Rockets VS Warriors",
+         "children":[
+             {
+                "name":"Rockets VS Jazz",
+                "children":[
+                  {"name":"Rockets VS TimberWolves"},
+                  {"name":"Thunder VS Jazz"}
+                 ]
+             },
+             {
+                 "name":"Pelcans VS Warriors",
+                 "children":[
+                     {"name":"Pelicans VS TrailBlazers"},
+                     {"name":"Spurs VS Warriors"}
+                 ]
+             }
+             ]
+     },
+     {
+         "name":"Cavaliers VS Celtics",
+         "children":[
+             {
+                 "name":"Raptors VS Cavaliers",
+                 "children":[
+                     {"name":"Raptors VS Wizards"},
+                     {"name":"Cavaliers VS Pacers"}
+                 ]
+             },
+             {
+                 "name":"76ers VS Celtics",
+                 "children":[
+                     {"name":"76ers VS Heat"},
+                     {"name":"Celtics VS Bucks"}
+                 ]
+             }
+         ]
+     }
+ ]
+}
