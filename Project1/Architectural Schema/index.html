@@ -16,12 +16,20 @@
     </header>
 
     <!-- all we need is an element to select -->
-    <div id="d3-container"> </div>
+    <div id="d3-dashboard"> 
+        <div id='Bracket'> </div>
+        <div id='ShotChart1'></div>
+        <div id='ShotChart2'> </div>
+        <div id='BarChart1'> </div>
+        <div id='AreaChart1'> </div>
+        <div id='BarChart2'> </div>
+        <div id='AreaChart2'> </div>
+    </div>
 
     <!-- this is the line that loads in d3 -->
     <script src="../../lib/d3.js"></script>
     <script src="../../lib/d3-array.js"></script>
     <!-- this is the line that loads in the main js script -->
-    <script src="./homepage.js"></script>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>

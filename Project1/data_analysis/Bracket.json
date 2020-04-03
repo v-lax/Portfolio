@@ -1,5 +1,5 @@
 {
- "name":"NBA Finals",
+ "name":"Warriors VS Cavaliers",
  "children":[
      {
          "name": "Rockets VS Warriors",
@@ -12,7 +12,7 @@
                  ]
              },
              {
-                 "name":"Pelcans VS Warriors",
+                 "name":"Pelicans VS Warriors",
                  "children":[
                      {"name":"Pelicans VS TrailBlazers"},
                      {"name":"Spurs VS Warriors"}
