@@ -24,7 +24,12 @@ let state = {
     selectedShot2:null,
     selectedPlayer2:null,
     filteredData1:[],
-    filteredData2:[]
+    filteredData2:[],
+    shotdomain1:[],
+    quarterdomain1:[],
+    shotdomain2:[],
+    quarterdomain2:[]
+
   };
 
 //Loading in data 
@@ -42,17 +47,20 @@ Promise.all([
 function init(){
     bracket = new Bracket(state,setGlobalState,setLocalState);
     shotchart = new Shotchart(state,setGlobalState,setLocalState);
-    barchart = new Barchart(state);
-    areachart = new Areachart(state,setGlobalState);
+    barchart = new Barchart(state,setGlobalState,setLocalState);
+    //areachart = new Areachart(state,setGlobalState);
 }
 
 function filter(){
-    bracket.filter(state,setGlobalState,setLocalState)
+    bracket.filter(state,setGlobalState,setLocalState);
     shotchart.updateOptions(state,setGlobalState,setLocalState);
+    barchart.draw(state,setGlobalState,setLocalState);
 }
 
 function draw(){
     shotchart.draw(state,setGlobalState,setLocalState);
+    barchart.draw(state,setGlobalState,setLocalState);
+    
 }
 
 function setGlobalState(nextState){

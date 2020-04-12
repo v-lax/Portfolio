@@ -16,7 +16,8 @@ class Shotchart {
 
         this.angle = Math.atan((10-0.75)/(22))* 180 / Math.PI
         this.dis = this.court_yscale(18);
-        
+
+      
       this.gamedropdown1=d3.select('#ShotChart1')
                               .append('select')
                               .attr('id','gamedropdown')
@@ -46,7 +47,7 @@ class Shotchart {
                           .attr('id','shotdropdown')
                           .attr('name','shotdropdown')
 
-        this.svg1 = d3
+     this.svg1 = d3
               .select("#ShotChart1")
               .append("svg")
               .attr("width", this.width)
@@ -262,13 +263,21 @@ appendArcPath(this.Bottomfreethrow2, this.court_xscale(6)-this.court_xscale(0), 
     }
 
 updateOptions(state,setGlobalState,setLocalState){
-    //this.filteredData1 = state.data1.filter(d=>d.TEAM_NAME.includes(state.selectedTeams[0]));
-    //this.filteredData2 = state.data1.filter(d=>d.TEAM_NAME.includes(state.selectedTeams[1]));    
-    
-    //console.log(this.filteredData1[0].shot_id)
+    this.title1=d3.select('#shotchart-team1')
+                //.append('h3')
+                //.append('text')
+                  .text(`Team 1: ${state.selectedTeams[0]}`)
+    this.title2=d3.select('#shotchart-team2')
+                //.append('h3')
+                //.append('text')
+                  .text(`Team 2: ${state.selectedTeams[1]}`)
+        
         this.selectGame1=this.gamedropdown1
-                             .on('change',function(){
+                             .on('change',function(){if((this.value === '1')||(this.value==='2')||(this.value==='3')||(this.value==='4')||(this.value==='5')||(this.value==='6')||(this.value==='7')){
                                 setLocalState({selectedGame1:parseInt(this.value,10)})
+                             }else{
+                                setLocalState({selectedGame1:this.value})
+                             }
                              })
                               .selectAll('option')
                               .data(['All Games',...d3.map(state.data1, function(d){return d['game_number'];}).keys()])
@@ -280,9 +289,11 @@ updateOptions(state,setGlobalState,setLocalState){
                             });
     
         this.selectGame2=this.gamedropdown2
-                             .on('change',function(){
-                                     setLocalState({selectedGame2:parseInt(this.value,10)})
-                            })
+                             .on('change',function(){if((this.value === '1')||(this.value==='2')||(this.value==='3')||(this.value==='4')||(this.value==='5')||(this.value==='6')||(this.value==='7')){
+                                setLocalState({selectedGame2:parseInt(this.value,10)})
+                             }else{
+                                setLocalState({selectedGame2:this.value})
+                             }})
                               .selectAll('option')
                               .data(['All Games',...d3.map(state.data1, function(d){return d['game_number'];}).keys()])
                               .join('option')
@@ -347,7 +358,12 @@ updateOptions(state,setGlobalState,setLocalState){
                                 .attr('opacity',.5)
                                 .attr('cx',d=>this.shot_xscale(d.LOC_X))
                                 .attr('cy',d=>this.shot_yscale(d.LOC_Y))
-                                .attr('r',5),
+                                .attr('r',0)
+                                .call(enter=>enter
+                                    .transition()
+                                    .delay(500)
+                                    .duration(1000)
+                                    .attr('r',5)),
                                 update=>update.attr('cx',d=>this.shot_xscale(d.LOC_X))
                                               .attr('cy',d=>this.shot_yscale(d.LOC_Y)),
                                 exit=>exit.call(exit => exit
@@ -372,7 +388,12 @@ updateOptions(state,setGlobalState,setLocalState){
                                 .attr('opacity',.5)
                                 .attr('cx',d=>this.shot_xscale(d.LOC_X))
                                 .attr('cy',d=>this.shot_yscale(d.LOC_Y))
-                                .attr('r',5),
+                                .attr('r',0)
+                                .call(enter=>enter
+                                        .transition()
+                                        .delay(500)
+                                        .duration(1000)
+                                        .attr('r',5)),
                                 update=>update.attr('cx',d=>this.shot_xscale(d.LOC_X))
                                               .attr('cy',d=>this.shot_yscale(d.LOC_Y)),
                                 exit=>exit.call(exit => exit
@@ -385,65 +406,108 @@ updateOptions(state,setGlobalState,setLocalState){
     }
 
 draw(state,setGlobalState,setLocalState){
-    this.fd1;
+                
+    this.fd1 = state.filteredData1.filter(d=>{
+        if((state.selectedGame1 !== 'All Games')&&(state.selectedShot1!=='All Shots')&&(state.selectedPlayer1!=='All Players')){
+            return d.game_number===state.selectedGame1 && d.PLAYER_NAME === state.selectedPlayer1 && d.EVENT_TYPE===state.selectedShot1;
+        }else if((state.selectedGame1 === 'All Games')&&(state.selectedShot1==='All Shots')&&(state.selectedPlayer1==='All Players')){
+            return true; 
+        }else if((state.selectedGame1 !== 'All Games')&&(state.selectedShot1==='All Shots')&&(state.selectedPlayer1==='All Players')){
+            return d.game_number === state.selectedGame1;
+        }else if((state.selectedGame1 === 'All Games')&&(state.selectedShot1!=='All Shots')&&(state.selectedPlayer1==='All Players')){
+            return d.EVENT_TYPE === state.selectedShot1;
+        }else if((state.selectedGame1 === 'All Games')&&(state.selectedShot1==='All Shots')&&(state.selectedPlayer1!=='All Players')){
+             return d.PLAYER_NAME === state.selectedPlayer1;
+        }else if((state.selectedGame1 !== 'All Games')&&(state.selectedShot1!=='All Shots')&&(state.selectedPlayer1==='All Players')){
+            return d.game_number === state.selectedGame1 && d.EVENT_TYPE === state.selectedShot1;
+        }else if((state.selectedGame1 === 'All Games')&&(state.selectedShot1!=='All Shots')&&(state.selectedPlayer1!=='All Players')){
+            return d.EVENT_TYPE === state.selectedShot1 && d.PLAYER_NAME === state.selectedPlayer1;
+        }else if((state.selectedGame1 !== 'All Games')&&(state.selectedShot1==='All Shots')&&(state.selectedPlayer1!=='All Players')){
+            return d.game_number === state.selectedGame1 && d.PLAYER_NAME === state.selectedPlayer1;
+        }
+    })
 
-    if ((state.selectedGame1 !== 'All Games')&&(state.selectedShot1!=='All Shots')&&(state.selectedPlayer1!=='All Players')){
-        this.fd1 = state.filteredData1.filter(d=>{
-            return d.game_number===state.selectedGame1 && d.PlAYER_NAME === state.selectedPlayer1 && d.EVENT_TYPE === state.selectedShot1});
-    }else if((state.selectedGame1 === 'All Games')&&(state.selectedShot1==='All Shots')&&(state.selectedPlayer1==='All Players')){
-        return state.filteredData1;
-    }else if((state.selectedGame1 !== 'All Games')&&(state.selectedShot1==='All Shots')&&(state.selectedPlayer1==='All Players')){
-        this.fd1 = state.filteredData1.filter(d=>{
-            return d.game_number===state.selectedGame1});
-    }else if((state.selectedGame1 === 'All Games')&&(state.selectedShot1!=='All Shots')&&(state.selectedPlayer1==='All Players')){
-        this.fd1 = state.filteredData1.filter(d=>{
-            return d.EVENT_TYPE === state.selectedShot1});
-    }else if((state.selectedGame1 === 'All Games')&&(state.selectedShot1==='All Shots')&&(state.selectedPlayer1!=='All Players')){
-        this.fd1 = state.filteredData1.filter(d=>{
-            return d.PLAYER_NAME === state.selectedPlayer1});
-    }else if((state.selectedGame1 !== 'All Games')&&(state.selectedShot1!=='All Shots')&&(state.selectedPlayer1==='All Players')){
-        this.fd1 = state.filteredData1.filter(d=>{
-            return d.game_number === state.selectedGame1 && d.EVENT_TYPE === state.selectedShot1});
-    }else if((state.selectedGame1 === 'All Games')&&(state.selectedShot1!=='All Shots')&&(state.selectedPlayer1!=='All Players')){
-        this.fd1 = state.filteredData1.filter(d=>{
-            return d.EVENT_TYPE === state.selectedShot1 && d.PLAYER_NAME === state.selectedPlayer1});
-    }else if((state.selectedGame1 !== 'All Games')&&(state.selectedShot1==='All Shots')&&(state.selectedPlayer1!=='All Players')){
-        this.fd1 = state.filteredData1.filter(d=>{
-            return d.game_number === state.selectedGame1 && d.PLAYER_NAME === state.selectedPlayer1});
-    }
+    this.fd2 = state.filteredData2.filter(d=>{
+        if((state.selectedGame2 !== 'All Games')&&(state.selectedShot2!=='All Shots')&&(state.selectedPlayer2!=='All Players')){
+            return d.game_number===state.selectedGame2 && d.PLAYER_NAME === state.selectedPlayer2 && d.EVENT_TYPE===state.selectedShot2;
+        }else if((state.selectedGame2 === 'All Games')&&(state.selectedShot2==='All Shots')&&(state.selectedPlayer2==='All Players')){
+            return true; 
+        }else if((state.selectedGame2 !== 'All Games')&&(state.selectedShot2==='All Shots')&&(state.selectedPlayer2==='All Players')){
+            return d.game_number === state.selectedGame2;
+        }else if((state.selectedGame2 === 'All Games')&&(state.selectedShot2!=='All Shots')&&(state.selectedPlayer2==='All Players')){
+            return d.EVENT_TYPE === state.selectedShot2;
+        }else if((state.selectedGame2 === 'All Games')&&(state.selectedShot2==='All Shots')&&(state.selectedPlayer2!=='All Players')){
+            return d.PLAYER_NAME === state.selectedPlayer2;
+        }else if((state.selectedGame2 !== 'All Games')&&(state.selectedShot2!=='All Shots')&&(state.selectedPlayer2==='All Players')){
+            return d.game_number === state.selectedGame2 && d.EVENT_TYPE === state.selectedShot2;
+        }else if((state.selectedGame2 === 'All Games')&&(state.selectedShot2!=='All Shots')&&(state.selectedPlayer2!=='All Players')){
+            return d.EVENT_TYPE === state.selectedShot2 && d.PLAYER_NAME === state.selectedPlayer2;
+        }else if((state.selectedGame2 !== 'All Games')&&(state.selectedShot2==='All Shots')&&(state.selectedPlayer2!=='All Players')){
+            return d.game_number === state.selectedGame2 && d.PLAYER_NAME === state.selectedPlayer2;
+        }
+    })
+  
 
-    //if((state.selectedGame2 !== 'All Games')&&(state.selectedShot2!=='All Shots')&&(state.selectedPlayer2!=='All Players')){
-        //this.filteredData2 = state.data1.filter(d=>d.game_number===state.selectedGame2 && d.PlAYER_NAME === state.selectedPlayer2 && d.EVENT_TYPE === state.selectedShot2);
-    //}else if((state.selectedGame2 === 'All Games')&&(state.selectedShot2==='All Shots')&&(state.selectedPlayer2==='All Players')){
-        //return this.filteredData2;
-    //}else if((state.selectedGame2 !== 'All Games')&&(state.selectedShot2==='All Shots')&&(state.selectedPlayer2==='All Players')){
-        //this.filteredData2 = state.data1.filter(d=>d.game_number===state.selectedGame2);
-    //}else if((state.selectedGame2 === 'All Games')&&(state.selectedShot2!=='All Shots')&&(state.selectedPlayer2==='All Players')){
-        //this.filteredData2 = state.data1.filter(d=>d.EVENT_TYPE === state.selectedShot2);
-    //}else if((state.selectedGame2 === 'All Games')&&(state.selectedShot2==='All Shots')&&(state.selectedPlayer2!=='All Players')){
-        //this.filteredData2 = state.data1.filter(d=>d.PLAYER_NAME === state.selectedPlayer2);
-    //}else if((state.selectedGame2 !== 'All Games')&&(state.selectedShot2!=='All Shots')&&(state.selectedPlayer2==='All Players')){
-        //this.filteredData2 = state.data1.filter(d=>d.game_number === state.selectedGame2 && d.EVENT_TYPE === state.selectedShot2);
-    //}else if((state.selectedGame2 === 'All Games')&&(state.selectedShot2!=='All Shots')&&(state.selectedPlayer2!=='All Players')){
-        //this.filteredData2 = state.data1.filter(d=>d.EVENT_TYPE === state.selectedShot2 && d.PLAYER_NAME === state.selectedPlayer2);
-    //}else if((state.selectedGame2 !== 'All Games')&&(state.selectedShot2==='All Shots')&&(state.selectedPlayer2!=='All Players')){
-        //this.filteredData2 = state.data1.filter(d=>d.game_number === state.selectedGame2 && d.PLAYER_NAME === state.selectedPlayer2);
-    //}
+this.dot1 = this.svg1.selectAll('.dot')
+    .data(this.fd1,d=>d.shot_id)
+    .join(
+       enter => enter.append('circle')
+                     .attr('class','dot')
+                     .attr('fill',d=>{
+                        if(d.SHOT_MADE_FLAG===1){
+                            return 'green';
+                       } else if(d.SHOT_MADE_FLAG===0){
+                            return 'red'; 
+                        }})
+                    .attr('opacity',.5)
+                    .attr('cx',d=>this.shot_xscale(d.LOC_X))
+                    .attr('cy',d=>this.shot_yscale(d.LOC_Y))
+                    .attr('r',0)
+                    .call(enter=>enter
+                            .transition()
+                            .delay(500)
+                            .duration(1000)
+                            .attr('r',5)),
+       update=>update.attr('cx',d=>this.shot_xscale(d.LOC_X))
+                     .attr('cy',d=>this.shot_yscale(d.LOC_Y)),
+       exit=>exit.call(exit => exit
+           .transition()
+           .delay(500)
+           .duration(1000)
+           .attr('r',0)
+           .remove())
+   )
 
-//this.dot1 = this.svg1.selectAll('.dot')
-    //.data(this.filteredData1,d=>d.shot_id)
-    //.join(
-       //update=>update.attr('cx',d=>this.shot_xscale(d.LOC_X))
-                     //.attr('cy',d=>this.shot_yscale(d.LOC_Y)),
-       //exit=>exit.call(exit => exit
-           //.transition()
-           //.delay(500)
-           //.duration(1000)
-           //.attr('r',0)
-           //.remove())
-   // )
-    console.log('data1:',this.fd1)
-    //console.log('data2:',this.filteredData2)
+this.dot2 = this.svg2.selectAll('.dot')
+   .data(this.fd2,d=>d.shot_id)
+   .join(
+      enter => enter.append('circle')
+                    .attr('class','dot')
+                    .attr('fill',d=>{
+                       if(d.SHOT_MADE_FLAG===1){
+                           return 'green';
+                      } else if(d.SHOT_MADE_FLAG===0){
+                           return 'red'; 
+                       }})
+                   .attr('opacity',.5)
+                   .attr('cx',d=>this.shot_xscale(d.LOC_X))
+                   .attr('cy',d=>this.shot_yscale(d.LOC_Y))
+                   .attr('r',0)
+                   .call(enter=>enter
+                        .transition()
+                        .delay(500)
+                        .duration(1000)
+                        .attr('r',5)),
+      update=>update.attr('cx',d=>this.shot_xscale(d.LOC_X))
+                    .attr('cy',d=>this.shot_yscale(d.LOC_Y)),
+      exit=>exit.call(exit => exit
+          .transition()
+          .delay(500)
+          .duration(1000)
+          .attr('r',0)
+          .remove())
+  )
+    
 }
 
 }
