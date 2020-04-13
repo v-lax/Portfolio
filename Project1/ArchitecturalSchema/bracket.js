@@ -96,7 +96,7 @@ class Bracket {
 
         //state.shotdomain1 = [0,d3.max(state.filteredData1.map(
             //d=> d['SHOT_ZONE_BASIC']
-        //))] 
+        //))]! 
         //state.shotdomain2 = [0,d3.max(state.filteredData2.map(
             //d=> d['SHOT_ZONE_BASIC']
         //))]

@@ -10,7 +10,7 @@ class Shotchart {
         this.court_xscale=d3.scaleLinear().domain([-25,25]).range([this.margins.left,this.innerwidth])
         this.court_yscale=d3.scaleLinear().domain([-4,43]).range([this.margins.top,this.innerheight])
         
-        //shot scales
+        //shot scales!
         this.shot_xscale=d3.scaleLinear().domain([-250,250]).range([this.margins.left,this.innerwidth]).nice()
         this.shot_yscale=d3.scaleLinear().domain([-45,420]).range([this.margins.top,this.innerheight]).nice()
 

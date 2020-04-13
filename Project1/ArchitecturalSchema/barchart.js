@@ -16,7 +16,7 @@ class Barchart {
             .attr('width',this.width)
             .attr('height',this.height);
 
-        //this.svgquart1 = d3
+        //this.svgquart1 = d3!
             //.select('#Chart1')
             //.append('svg')
             //.attr('width',this.width)

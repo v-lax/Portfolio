@@ -8,7 +8,7 @@ import {Areachart} from "./areachart.js"
 let bracket, barchart,areachart;
 let shotchart
 
-//Application State
+//Application State!
 let state = {
     data: [],
     data1:[],
