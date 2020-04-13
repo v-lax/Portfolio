@@ -3,9 +3,8 @@
 import {Bracket} from "./bracket.js"
 import {Shotchart} from "./shotchart.js"
 import {Barchart} from "./barchart.js"
-import {Areachart} from "./areachart.js"
 
-let bracket, barchart,areachart;
+let bracket, barchart;
 let shotchart
 
 //Application State!
