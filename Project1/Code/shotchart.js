@@ -1,5 +1,7 @@
 class Shotchart {
     constructor(state,setGlobalState,setLocalState){
+
+        //Code for basketball court layout was based off this following code - https://bl.ocks.org/YouthBread/4481cdd85d60a503a986d658404232c8s
         this.width = 480;
         this.height = (480/50)*47;
         this.margins = { top: 20, bottom: 20, left: 20, right: 20 };

@@ -7,14 +7,14 @@
              {
                 "name":"Rockets VS Jazz",
                 "children":[
-                  {"name":"Rockets VS TimberWolves"},
+                  {"name":"Rockets VS T-Wolves"},
                   {"name":"Thunder VS Jazz"}
                  ]
              },
              {
                  "name":"Pelicans VS Warriors",
                  "children":[
-                     {"name":"Pelicans VS TrailBlazers"},
+                     {"name":"Pelicans VS T-Blazers"},
                      {"name":"Spurs VS Warriors"}
                  ]
              }

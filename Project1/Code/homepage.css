@@ -90,6 +90,14 @@ h2{
     color:white;
 }
 
+.y-axis1{
+    color:white;
+}
+
+.y-axis2{
+    color:white;
+}
+
 .axis-label{
     fill:white;
 }
@@ -108,4 +116,13 @@ h2{
 
 .quartertext2{
     fill:white;
+}
+
+.bracket-rect:hover{
+    fill:transparent;
+    stroke-width: 5;  
+}
+
+.bracket-text:hover{
+    cursor:pointer;
 }

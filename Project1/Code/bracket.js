@@ -6,15 +6,15 @@ class Bracket {
     
     this.container = d3.select("#Bracket")
                        .append('svg')
-                       .attr('width',this.width+this.margins.right)
-                       .attr('height',this.height+40);
+                       .attr('width',this.width)
+                       .attr('height',this.height);
     
     this.root = d3.hierarchy(state.json)
 
     this.tree = d3.tree()
-                  .separation(function(a, b) { return (a.parent == b.parent) ? 1 : 1;})
-                  .size([this.width,this.height-50]);
-    
+                  .separation(function(a,b) { return ((a.depth==b.depth)) ? 2: 1;})
+                  .size([1095,381]);
+    console.log(this.root)
     this.tree(this.root)
     this.nodes =this.container
                 .selectAll("g")
@@ -23,10 +23,11 @@ class Bracket {
                 .attr("transform",d=>`translate(${d.x},${d.y})`);
     
     this.rectangles=this.nodes.append("rect")
+                .attr('class','bracket-rect')
                 .data(this.root.descendants())
-                .attr('width', "150")
+                .attr('width', "130")
                 .attr('height', "40")
-                .attr('fill','none')
+                .attr('fill','transparent')
                 .attr('stroke','white')
                 .attr('stroke-width',2)
                 .attr('rx','15px')
@@ -57,13 +58,15 @@ class Bracket {
         .attr('x2', function(d) {return d.target.x+50;})
         .attr('y2', function(d) {return d.target.y;});
     this.series=this.nodes.append('text')
-                          .attr('transform',`translate(5,15)`)
+                          .attr('class','bracket-text')
+                          .attr('text-anchor','middle')
+                          .attr('transform',`translate(65,20)`)
                           .attr('dy','.40em')
                           .text(d=>d.data.name)
                           .style('fill','white')
                           .style('font-size','12px')
                           .style('font-family','Fjalla One,sans-serif')
-                          .style('text-align','center')
+                          //.style('text-align','center')
     
     this.nodes.on("click", d => {
         setGlobalState({ selectedSeries: d.data.name,
