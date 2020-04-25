@@ -10,10 +10,12 @@ class Bracket {
                        .attr('height',this.height);
     
     this.root = d3.hierarchy(state.json)
-
+    
+    //1095,381
     this.tree = d3.tree()
                   .separation(function(a,b) { return ((a.depth==b.depth)) ? 2: 1;})
-                  .size([1095,381]);
+                  .size([this.width-this.margins.right,381]);
+    
     console.log(this.root)
     this.tree(this.root)
     this.nodes =this.container
