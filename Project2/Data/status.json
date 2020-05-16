@@ -1,0 +1,24 @@
+{
+    "name":"Total",
+    "children":[
+        {"name":"Not on Death Row","children":[{"name":"White","value":1562},
+            {"name":"Black","value":1252},
+            {"name":"Hispanic/Latino","value":210},
+            {"name":"Native American","value":43},
+            {"name":"Asian","value":20},
+            {"name":"Other/Uknown","value":42}]},
+        {"name":"Death Row","children":[{"name":"White","value":1174},
+            {"name":"Black","value":1146},
+            {"name":"Hispanic/Latino","value":347},
+            {"name":"Native American","value":32},
+            {"name":"Asian","value":51},
+            {"name":"Other/Uknown","value":2}
+            ]},
+        {"name":"Executed","children":[{"name":"White","value":808},
+            {"name":"Black","value":490},
+            {"name":"Hispanic/Latino","value":126},
+            {"name":"Native American","value":15},
+            {"name":"Asian","value":8},
+            {"name":"Other/Uknown","value":0}]}
+        ]
+}

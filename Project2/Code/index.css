@@ -1,0 +1,131 @@
+h1{
+    color: black;
+    text-align: center;
+    font-family: monospace;
+}
+
+/**.text{
+    color: whitesmoke;
+    text-align: center;
+}**/
+.sources p{
+    color: black;
+    text-align: center;
+}
+
+.sources h3{
+    color: black;
+    text-align: center;
+    font-family: monospace;
+}
+#scrollyside .scrolly{
+    display: flex;
+    max-width: 100rem;
+    margin: 3rem auto;
+	background-color: black;
+	padding: 1rem;
+}
+
+article{
+    padding-right: 1rem;
+    max-width: 30rem;
+}
+
+.step {
+    min-height: 67vh;
+	margin-bottom: 1rem;
+	transition: background-color 250ms ease-in-out;
+}
+
+.total_line_graph{
+    color: white;
+    font-family: monospace;
+}
+
+#total_line_graph_axis{
+    fill:white;
+    font-family: monospace;
+}
+
+.race_line_graph{
+    color: white;
+    font-family: monospace;
+}
+
+#race_line_graph_axis{
+    fill:white;
+    font-family: monospace;
+}
+
+.last_words_rect{
+    cursor:pointer;
+}
+
+.last_words_text{
+    fill: white;
+    font-family: "Lucida Sans Typewriter", "Lucida Console", monaco, "Bitstream Vera Sans Mono", monospace;
+}
+
+.intro_text{
+    fill: black;
+    text-align: center;
+    font-family: "Lucida Sans Typewriter", "Lucida Console", monaco, "Bitstream Vera Sans Mono", monospace;
+}
+
+#test-svg{
+    display: block;
+    margin:auto
+}
+
+p{
+    color: white;
+    text-align: left;
+    font-family: monospace;
+}
+
+
+*{
+    flex: 1;
+}
+
+
+figure.sticky{
+    position: sticky;
+	width: 100%;
+	height: 60vh;
+	background:none;
+	margin: 0;
+	top: 25vh;
+	left: 0;
+}
+
+
+
+
+
+.status_circles_text{
+    font-family: monospace;
+}
+
+.status_circles_numbers1{
+    font-family: monospace;
+}
+.status_circles_numbers2{
+    font-family: monospace;
+}
+.status_circles_numbers3{
+    font-family: monospace;
+}
+
+.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 120px;					
+    height: 35px;					
+    padding: 2px;				
+    font: 12px monospace;		
+    background:white ;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
