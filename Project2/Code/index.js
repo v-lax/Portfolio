@@ -39,9 +39,9 @@ let state ={
     status:[]
 };
 
-Promise.all([d3.csv('../data/the-condemed-data.csv',d3.autoType),
-             d3.csv('../data/tx_deathrow_full.csv'),
-             d3.json('../data/status.json') 
+Promise.all([d3.csv('../Data/the-condemed-data.csv',d3.autoType),
+             d3.csv('../Data/tx_deathrow_full.csv'),
+             d3.json('../Data/status.json') 
 ]).then(([data,text,status])=>{
     state.data = data;
     state.words= text;
