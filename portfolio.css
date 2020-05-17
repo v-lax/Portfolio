@@ -1,0 +1,86 @@
+@font-face{
+    font-family: bebas;
+    src: url(./BebasNeue-Regular.ttf);
+    font-weight: bold;
+}
+
+@font-face{
+    font-family: lato;
+    src: url(./Lato-Regular.ttf);
+}
+
+h1{
+    font-family: bebas;
+    text-align: center;
+}
+#Projects{
+    display: flex;
+}
+#Projects .project1{
+    background-color: orange;
+    flex: 50%;
+}
+.project1 h2{
+     color:darkblue;
+     text-align: center;
+     font-family: bebas;
+}
+
+.project2 h2{
+    color: orange;
+    text-align: center;
+    font-family:bebas;
+}
+
+.project2 a{
+    color: orange;
+    text-align: center;
+    font-family: lato;
+}
+
+.project1 a{
+    color: blue;
+    text-align: center;
+    font-family: lato;
+}
+.project1 p{
+    color:blue;
+    text-align: center;
+    font-family: lato;
+    padding-left: 20px;
+    padding-right:20px;
+}
+
+.project2 p{
+    color:orange;
+    text-align: center;
+    font-family: lato;
+    padding-left: 20px;
+    padding-right:20px;
+}
+
+#Projects .project2{
+    background-color: blue;
+    flex: 50%;
+}
+
+.images{
+    text-align: center;
+}
+
+.project1 img{
+    border-radius:15px;
+}
+
+.project2 img{
+    border-radius:15px;
+}
+
+.links{
+    text-align: center;
+}
+
+h3{
+    font-family: bebas;
+    text-align: center;
+}
