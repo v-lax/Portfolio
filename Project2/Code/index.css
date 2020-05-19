@@ -64,6 +64,7 @@ article{
 .last_words_text{
     fill: white;
     font-family: "Lucida Sans Typewriter", "Lucida Console", monaco, "Bitstream Vera Sans Mono", monospace;
+    text-align: center;
 }
 
 .intro_text{
