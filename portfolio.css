@@ -17,11 +17,11 @@ h1{
     display: flex;
 }
 #Projects .project1{
-    background-color: orange;
+    background-color: rgba(255, 166, 0, 0.897);
     flex: 50%;
 }
 .project1 h2{
-     color:darkblue;
+     color:rgb(0, 0, 107);
      text-align: center;
      font-family: bebas;
 }
@@ -39,12 +39,12 @@ h1{
 }
 
 .project1 a{
-    color: blue;
+    color: rgb(0, 0, 97);
     text-align: center;
     font-family: lato;
 }
 .project1 p{
-    color:blue;
+    color:rgb(0, 0, 107);
     text-align: center;
     font-family: lato;
     padding-left: 20px;
@@ -60,7 +60,7 @@ h1{
 }
 
 #Projects .project2{
-    background-color: blue;
+    background-color: rgb(0, 0, 107);
     flex: 50%;
 }
 
