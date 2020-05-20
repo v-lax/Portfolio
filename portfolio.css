@@ -27,13 +27,13 @@ h1{
 }
 
 .project2 h2{
-    color: orange;
+    color: rgb(230, 150, 0);
     text-align: center;
     font-family:bebas;
 }
 
 .project2 a{
-    color: orange;
+    color: rgb(226, 147, 0);
     text-align: center;
     font-family: lato;
 }
@@ -52,7 +52,7 @@ h1{
 }
 
 .project2 p{
-    color:orange;
+    color:rgb(224, 146, 0);
     text-align: center;
     font-family: lato;
     padding-left: 20px;
@@ -60,7 +60,7 @@ h1{
 }
 
 #Projects .project2{
-    background-color: rgb(0, 0, 107);
+    background-color: rgba(0, 0, 107, 0.918);
     flex: 50%;
 }
 
